@@ -20,7 +20,6 @@ zplug 'plugins/tmux', from:oh-my-zsh
 zplug 'plugins/tmuxinator', from:oh-my-zsh
 zplug 'plugins/fzf', from:oh-my-zsh
 zplug 'plugins/fasd', from:oh-my-zsh
-zplug 'wting/autojump'
 zplug 'zsh-users/zsh-syntax-highlighting'
 zplug 'zsh-users/zsh-history-substring-search'
 zplug 'zsh-users/zsh-autosuggestions'
