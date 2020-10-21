@@ -40,7 +40,7 @@ fi
 
 zplug load
 
-export ZSH="/home/ubuntu/.oh-my-zsh"
+export ZSH="~/.oh-my-zsh"
 export PATH=/opt/swift/usr/bin:$PATH
 
 plugins=(git)
