@@ -215,3 +215,5 @@ omap <leader><tab> <Plug>(fzf-map-o)
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-l> <plug>(fzf-complete-line)
+
+map <leader>gr :cgete system('swift ' . shellescape(expand('%:p')))<CR>:copen<CR><C-w><C-w>
