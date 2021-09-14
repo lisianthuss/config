@@ -30,19 +30,19 @@ Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install -all'}
 Plug 'junegunn/fzf.vim'
 
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 "Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-"Plug 'nsf/gocode'
+Plug 'nsf/gocode'
 "Plug 'pappasam/coc-jedi' , {'do': 'yarn install --frozen-lockfile && yarn build'}
 
 " LSP for Swift
-Plug 'mattn/vim-lsp-settings'
-Plug 'prabirshrestha/vim-lsp'
-            \ |Plug 'prabirshrestha/async.vim'
-            \ |Plug 'prabirshrestha/asyncomplete-lsp.vim'
-            \ |Plug 'prabirshrestha/asyncomplete.vim'
-            \ |Plug 'prabirshrestha/asyncomplete-buffer.vim'
+"Plug 'mattn/vim-lsp-settings'
+"Plug 'prabirshrestha/vim-lsp'
+"            \ |Plug 'prabirshrestha/async.vim'
+"            \ |Plug 'prabirshrestha/asyncomplete-lsp.vim'
+"            \ |Plug 'prabirshrestha/asyncomplete.vim'
+"            \ |Plug 'prabirshrestha/asyncomplete-buffer.vim'
 
 Plug 'keith/swift.vim'
 
@@ -75,6 +75,7 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'ronakg/quickr-cscope.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'mhinz/vim-startify'
+Plug 'fatih/vim-go'
 
 call plug#end()
 
