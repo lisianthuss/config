@@ -24,7 +24,7 @@ filetype plugin on
 filetype on
 syntax on
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 Plug 'junegunn/vim-easy-align'
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
 Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install -all'}
