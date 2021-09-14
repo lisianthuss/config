@@ -78,7 +78,8 @@ Plug 'mhinz/vim-startify'
 
 call plug#end()
 
-au VimEnter * colorscheme palenight
+"au VimEnter * colorscheme palenight
+colorscheme palenight
 
 let mapleader=','
 
