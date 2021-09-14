@@ -76,6 +76,7 @@ Plug 'ronakg/quickr-cscope.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'mhinz/vim-startify'
 Plug 'fatih/vim-go'
+Plug 'ekalinin/Dockerfile.vim'
 
 call plug#end()
 
