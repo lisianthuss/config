@@ -24,8 +24,6 @@ filetype plugin on
 filetype on
 syntax on
 
-au VimEnter * colorscheme palenight
-
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/vim-easy-align'
 Plug 'https://github.com/junegunn/vim-github-dashboard.git'
@@ -79,6 +77,8 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'mhinz/vim-startify'
 
 call plug#end()
+
+au VimEnter * colorscheme palenight
 
 let mapleader=','
 
