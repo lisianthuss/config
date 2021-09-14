@@ -1,3 +1,61 @@
+" ---------------------------------------------------------------------
+"  Plugins
+" ---------------------------------------------------------------------
+call plug#begin('~/.config/nvim/plugged')
+
+" General Plugins
+Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
+Plug 'Lokaltog/vim-easymotion'
+Plug 'kien/ctrlp.vim'
+            \| Plug 'fisadev/vim-ctrlp-cmdpalette'
+            \| Plug 'ivalkeen/vim-ctrlp-tjump'
+            \| Plug 'sgur/ctrlp-extensions.vim'
+            \| Plug 'suy/vim-ctrlp-commandline'
+            \| Plug 'tacahiroy/ctrlp-funky'
+Plug 'dyng/ctrlsf.vim'
+Plug 'godlygeek/tabular'
+Plug 'jiangmiao/auto-pairs'
+Plug 'majutsushi/tagbar'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'abudden/taghighlight-automirror'
+Plug 'vim-scripts/a.vim'
+Plug 'tpope/vim-fugitive'                              " A git wrapper
+Plug 'scrooloose/nerdtree'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'mhinz/vim-startify'
+
+" Language Support
+Plug 'fatih/vim-go'
+Plug 'keith/swift.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+"Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'nsf/gocode'
+"Plug 'pappasam/coc-jedi' , {'do': 'yarn install --frozen-lockfile && yarn build'}
+
+" - LSP for Swift
+"Plug 'mattn/vim-lsp-settings'
+"Plug 'prabirshrestha/vim-lsp'
+"            \ |Plug 'prabirshrestha/async.vim'
+"            \ |Plug 'prabirshrestha/asyncomplete-lsp.vim'
+"            \ |Plug 'prabirshrestha/asyncomplete.vim'
+"            \ |Plug 'prabirshrestha/asyncomplete-buffer.vim'
+
+Plug 'rstacruz/sparkup', {'rtp': 'vim/'}                " write HTML code faster
+Plug 'ekalinin/Dockerfile.vim'                          " docker syntax
+
+" Colorscheme
+Plug 'drewtempelmeyer/palenight.vim'
+
+call plug#end()
+
+" ---------------------------------------------------------------------
+"  General Settings
+" ---------------------------------------------------------------------
 set nu
 set showcmd
 set incsearch
@@ -24,68 +82,45 @@ filetype plugin on
 filetype on
 syntax on
 
-call plug#begin('~/.config/nvim/plugged')
-Plug 'junegunn/vim-easy-align'
-Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install -all'}
-Plug 'junegunn/fzf.vim'
+" Enable mouse if possible
+if has('mouse')
+    set mouse=a
+endif
 
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-"Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
-"Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-Plug 'nsf/gocode'
-"Plug 'pappasam/coc-jedi' , {'do': 'yarn install --frozen-lockfile && yarn build'}
-
-" LSP for Swift
-"Plug 'mattn/vim-lsp-settings'
-"Plug 'prabirshrestha/vim-lsp'
-"            \ |Plug 'prabirshrestha/async.vim'
-"            \ |Plug 'prabirshrestha/asyncomplete-lsp.vim'
-"            \ |Plug 'prabirshrestha/asyncomplete.vim'
-"            \ |Plug 'prabirshrestha/asyncomplete-buffer.vim'
-
-Plug 'keith/swift.vim'
-
-Plug 'Lokaltog/vim-easymotion'
-Plug 'kien/ctrlp.vim'
-            \| Plug 'fisadev/vim-ctrlp-cmdpalette'
-            \| Plug 'ivalkeen/vim-ctrlp-tjump'
-            \| Plug 'sgur/ctrlp-extensions.vim'
-            \| Plug 'suy/vim-ctrlp-commandline'
-            \| Plug 'tacahiroy/ctrlp-funky'
-Plug 'dyng/ctrlsf.vim'
-Plug 'godlygeek/tabular'
-Plug 'jiangmiao/auto-pairs'
-Plug 'majutsushi/tagbar'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'abudden/taghighlight-automirror'
-Plug 'vim-scripts/a.vim'
-
-" color scheme
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'morhetz/gruvbox'
-Plug 'git://git.wincent.com/command-t.git'
-Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-abolish'
-Plug 'Lokaltog/vim-easymotion'
-Plug 'ronakg/quickr-cscope.vim'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'mhinz/vim-startify'
-Plug 'fatih/vim-go'
-Plug 'ekalinin/Dockerfile.vim'
-
-call plug#end()
+let mapleader=','
 
 "au VimEnter * colorscheme palenight
 colorscheme palenight
 
-let mapleader=','
+" ---------------------------------------------------------------------
+"  Searching
+" ---------------------------------------------------------------------
 
-" Sourcekit-LSP configuration
+" ---------------------------------------------------------------------
+"  Navigation
+" ---------------------------------------------------------------------
+nnoremap <buffer><silent> q :cclose<CR>
+
+" Improve completion popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? "\<C-y>" : "\<cr>"
+inoremap <expr> <Esc>   pumvisible() ? "\<C-e>" : "\<Esc>"
+
+autocmd BufReadPost *
+            \ if line("'\"") > 0 && line("'\"") <= line("$") |
+            \ exe "normal g'\"" |
+            \ endif
+
+" ---------------------------------------------------------------------
+"  Custom command
+" ---------------------------------------------------------------------
+au FileType swift nmap <leader>r :w<CR>:cgete system('swift '.shellescape(expand('%')))<CR>:copen<CR><C-w><C-w><CR>
+au FileType go nmap <leader>r :w<CR>:cgete system('go run '.shellescape(expand('%')))<CR>:copen<CR><C-w><C-w><CR>
+
+" ---------------------------------------------------------------------
+"  Plugin: Sourcekit-LSP
+" ---------------------------------------------------------------------
 if executable('sourcekit-lsp')
     au User lsp_setup call lsp#register_server({
                 \ 'name': 'sourcekit-lsp',
@@ -96,81 +131,6 @@ endif
 
 autocmd FileType swift setlocal omnifunc=lsp#complete
 autocmd FileType swift nnoremap <C-]> :LspDefinition<CR>
-
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-
-" Use Tab for trigger completion
-inoremap <silent><expr> <TAB>
-    \ pumvisible() ? "<C-n>" :
-    \ coc#expandableOrJumpable() ? coc#rpc#request('doKeymap', ['snippets-expand-jump','']) :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1] =~# '\s'
-endfunction
-
- "Use <cr> to confirm completion, '<C-g>u' means break undo chain at current
- "position.
-if exists('*complete_info')
-    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
-
-" Use '[g' and ']g' to navigate diagnostics
-"nmap <silent> [g <Plug>(coc-diagnostic-prev)
-"nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation.
-"nmap <silent> gd <Plug>(coc-definition)
-"nmap <silent> gy <Plug>(coc-type-definition)
-"nmap <silent> gi <Plug>(coc-implementation)
-"nmap <silent> gr <Plug>(coc-references)
-
-" Use K show documentation in previe window.
-"nnoremap <silent> K :call <SID>show_documentations()<CR>
-
-"function! s:show_documentations()
-"    if (index(['vim','help'], &filetype) >= 0)
-"        execute 'h '.expand('<cword>')
-"    else
-"        call CocAction('doHover')
-"    endif
-"endfunction
-
-" Symbol renaming
-"nmap <leader>rn <Plug>(coc-rename)
-
-"let g:coc_snippet_next = '<TAB>'
-
-map <leader>sb <ESC>:CtrlPBuffer<CR>
-map <leader>sd <ESC>:CtrlPBookmarkDir<CR>
-map <leader>sm <ESC>:CtrlPMRUFiles<CR>
-
-vmap <leader>sq <Plug>CtrlSFVwordPath
-
-nnoremap <leader>su :CtrlPFunky<CR>
-nnoremap <leader>sU :execute 'CtrlPFunky ' . expand('<cword>')<CR>
-
-nmap / <Plug>(easymotion-sn)
-omap / <Plug>(easymotion-tn)
-map <leader>l <Plug>(easymotion-lineforward)
-map <leader>j <Plug>(easymotion-j)
-map <leader>k <Plug>(easymotion-k)
-map <leader>h <Plug>(easymotion-linebackward)
-nmap s <Plug>(easymotion-overwin-f)
-
-nnoremap <buffer><silent> q :cclose<CR>
-
-au FileType swift nmap <leader>r :w<CR>:cgete system('swift '.shellescape(expand('%')))<CR>:copen<CR><C-w><C-w><CR>
-
-autocmd BufReadPost *
-            \ if line("'\"") > 0 && line("'\"") <= line("$") |
-            \ exe "normal g'\"" |
-            \ endif
 
 if executable('pyls')
     au User lsp_setup call lsp#register_server({
@@ -200,17 +160,83 @@ augroup lsp_install
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 
-" Tab Completion, asyncomplete.vim
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+" ---------------------------------------------------------------------
+"  Plugin: vim-go
+" ---------------------------------------------------------------------
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 
-"vim-lsp
+" ---------------------------------------------------------------------
+"  Plugin: Coc
+" ---------------------------------------------------------------------
+" Use Tab for trigger completion
+inoremap <silent><expr> <TAB>
+    \ pumvisible() ? "<C-n>" :
+    \ coc#expandableOrJumpable() ? coc#rpc#request('doKeymap', ['snippets-expand-jump','']) :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+function! s:check_back_space() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1] =~# '\s'
+endfunction
+
+ "Use <cr> to confirm completion, '<C-g>u' means break undo chain at current
+ "position.
+if exists('*complete_info')
+    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" Symbol renaming
+"nmap <leader>rn <Plug>(coc-rename)
+
+"let g:coc_snippet_next = '<TAB>'
+
+" Use '[g' and ']g' to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" ---------------------------------------------------------------------
+"  Plugin: CtrlP
+" ---------------------------------------------------------------------
+map <leader>sb <ESC>:CtrlPBuffer<CR>
+map <leader>sd <ESC>:CtrlPBookmarkDir<CR>
+map <leader>sm <ESC>:CtrlPMRUFiles<CR>
+
+vmap <leader>sq <Plug>CtrlSFVwordPath
+
+nnoremap <leader>su :CtrlPFunky<CR>
+nnoremap <leader>sU :execute 'CtrlPFunky ' . expand('<cword>')<CR>
+
+" ---------------------------------------------------------------------
+"  Plugin: Easymotion
+" ---------------------------------------------------------------------
+nmap / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map <leader>l <Plug>(easymotion-lineforward)
+map <leader>j <Plug>(easymotion-j)
+map <leader>k <Plug>(easymotion-k)
+map <leader>h <Plug>(easymotion-linebackward)
+nmap s <Plug>(easymotion-overwin-f)
+
+" ---------------------------------------------------------------------
+"  Plugin: vim-lsp
+" ---------------------------------------------------------------------
 let g:lsp_log_verbose = 1
 let g:lsp_log_file = expand('~/vim-lsp.log')
 let g:asyncomplete_log_file = expand('~/asyncomplete.log')
 
-" fzf.vim
+" ---------------------------------------------------------------------
+"  Plugin: fzf
+" ---------------------------------------------------------------------
 " Mapping selecting mappings
 nmap <leader><tab> <Plug>(fzf-map-n)
 xmap <leader><tab> <Plug>(fzf-map-x)
@@ -220,4 +246,15 @@ imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
 imap <c-x><c-l> <plug>(fzf-complete-line)
 
-map <leader>gr :cgete system('swift ' . shellescape(expand('%:p')))<CR>:copen<CR><C-w><C-w>
+" ---------------------------------------------------------------------
+"  Plugin: vim-go
+" ---------------------------------------------------------------------
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:go_auto_sameids = 1
