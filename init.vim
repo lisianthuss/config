@@ -76,6 +76,7 @@ Plug 'tpope/vim-abolish'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'ronakg/quickr-cscope.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'mhinz/vim-startify'
 
 call plug#end()
 
