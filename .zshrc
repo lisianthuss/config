@@ -1,3 +1,6 @@
+export LC_ALL=en_US.UTF
+export LANG=en_US.UTF-8
+
 if [ ! -d ~/.oh-my-zsh ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
