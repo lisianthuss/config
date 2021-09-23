@@ -1,5 +1,7 @@
-export LC_ALL=en_US.UTF
-export LANG=en_US.UTF-8
+if [[ ! -d ~/.zplug ]]; then
+    git clone https://github.com/zplug/zplug ~/.zplug
+    source ~/.zplug/init.zsh && zplug update
+fi
 
 if [ ! -d ~/.oh-my-zsh ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -18,10 +20,6 @@ if [ ! -d ~/.config/lisianthuss ]; then
     cp -r ~/.config/lisianthuss/nvim/plugged ~/.config/nvim/plugged
 fi
 
-if [[ ! -d ~/.zplug ]]; then
-    git clone https://github.com/zplug/zplug ~/.zplug
-    source ~/.zplug/init.zsh && zplug update
-fi
 
 source ~/.zplug/init.zsh
 
