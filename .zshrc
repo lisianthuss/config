@@ -7,6 +7,14 @@ if [ ! -d ~/.local/share/nvim/site/autoload ]; then
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 fi
 
+if [ ! -d ~/.config/lisianthuss ]; then
+    git clone https://github.com/lisianthuss/config.git ~/.config/lisianthuss
+    cp ~/.config/lisianthuss/.zshrc ~/.zshrc
+    mkdir -p ~/.config/nvim/
+    cp ~/.config/lisianthuss/nvim/init.vim ~/.config/nvim/init.vim
+    cp -r ~/.config/lisianthuss/nvim/plugged ~/.config/nvim/plugged
+fi
+
 if [[ ! -d ~/.zplug ]]; then
     git clone https://github.com/zplug/zplug ~/.zplug
     source ~/.zplug/init.zsh && zplug update

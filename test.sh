@@ -1,5 +1,3 @@
-if [ ! -d ~/.oh-my-zsh ]; then
-    echo "ohmyzsh directory not exists"
-else
-    echo "exists"
+if [ ! -d ~/.local/share/nvim/site/autoload ]; then
+    echo "nvim directory not exists"
 fi
