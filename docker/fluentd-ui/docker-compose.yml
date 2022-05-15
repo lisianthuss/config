@@ -1,0 +1,7 @@
+version: '3'
+services:
+  fluentd-ui:
+    image: dvladnik/fluentd-ui
+    ports:
+      - 9292:9292
+      - 24224:24224
