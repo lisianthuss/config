@@ -48,9 +48,13 @@ Plug 'nsf/gocode'
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}                " write HTML code faster
 Plug 'ekalinin/Dockerfile.vim'                          " docker syntax
 Plug 'sebdah/vim-delve'                                 " debugging Go application using Delve
+Plug 'projectfluent/fluent.vim'
 
 " Colorscheme
 Plug 'drewtempelmeyer/palenight.vim'
+
+Plug 'yoppi/fluentd.vim'
+Plug 'vim-ruby/vim-ruby'
 
 call plug#end()
 
@@ -82,6 +86,7 @@ filetype plugin indent on
 filetype plugin on
 filetype on
 syntax on
+au BufNewFile, BufRead *.rb setf ruby
 
 " Enable mouse if possible
 if has('mouse')
@@ -118,6 +123,9 @@ autocmd BufReadPost *
 " ---------------------------------------------------------------------
 au FileType swift nmap <leader>r :w<CR>:cgete system('swift '.shellescape(expand('%')))<CR>:copen<CR><C-w><C-w><CR>
 au FileType go nmap <leader>r :w<CR>:cgete system('go run '.shellescape(expand('%')))<CR>:copen<CR><C-w><C-w><CR>
+au FileType ruby nmap <leader>r :w<CR>:cgete system('ruby '.shellescape(expand('%')))<CR>:copen<CR><C-w><C-w><CR>
+au FileType eruby nmap <leader>r :w<CR>:cgete system('ruby '.shellescape(expand('%')))<CR>:copen<CR><C-w><C-w><CR>
+au FileType rb nmap <leader>r :w<CR>:cgete system('ruby '.shellescape(expand('%')))<CR>:copen<CR><C-w><C-w><CR>
 
 " ---------------------------------------------------------------------
 "  Plugin: Sourcekit-LSP
